@@ -14,6 +14,6 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render("index");
+Route::get('/register', function () {
+    return Inertia::render("register");
 });
