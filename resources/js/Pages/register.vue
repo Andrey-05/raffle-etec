@@ -1,5 +1,5 @@
 <script setup>
-import { Button, Input } from "../Components";
+import { Button, CSRF, Input } from "../Components";
 </script>
 
 <template>
@@ -17,14 +17,47 @@ import { Button, Input } from "../Components";
                 Gerenciamento de Rifas
             </h1>
 
-            <form action="" class="flex flex-col w-full gap-y-6">
-                <Input labeltext="Nome" type="text" required />
-                <Input labeltext="RM" type="number" required />
-                <Input labeltext="Senha" type="password" required />
-                <Input labeltext="Confirme a senha" type="password" required />
+            <form
+                action="/user"
+                method="POST"
+                class="flex flex-col w-full gap-y-6"
+            >
+                <CSRF />
+                <Input labeltext="Nome" name="name" type="text" required />
+                <Input labeltext="RM" name="rm" type="number" required />
+                <Input
+                    labeltext="Senha"
+                    name="password"
+                    type="password"
+                    required
+                />
+                <Input
+                    labeltext="Confirme a senha"
+                    name="password_confirmation"
+                    type="password"
+                    required
+                />
 
-                <Button>Cadastrar</Button>
+                <Button type="submit" @click="handleSubmit">Cadastrar</Button>
             </form>
         </div>
     </div>
 </template>
+
+<script>
+async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+        const res = await axios.post("/user", {
+            name: "Test",
+            password: "123",
+            password_confirmation: "1234",
+        });
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.log(error.response.data.error);
+        }
+    }
+}
+</script>
