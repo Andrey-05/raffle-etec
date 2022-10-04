@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,3 +18,5 @@ use Inertia\Inertia;
 Route::get('/register', function () {
     return Inertia::render("register");
 });
+
+Route::post('/user', [UserController::class, "create"]);
