@@ -9,9 +9,11 @@ const count = ref(0);
     <div
         class="min-h-screen w-full bg-neutral-50 flex flex-col justify-center items-center"
     >
-        <h1 class="text-2xl mb-4">Initial Project With Laravel and Vue</h1>
-        <Button @click="count++"
-            >The button was clicked {{ count }} times</Button
-        >
+        <img
+            src="/logoEtec.jpg"
+            alt="Logo da Etec da Zona Leste"
+            class="h-24 rounded-xl mb-6"
+        />
+        <h1 class="text-cyan-600 text-6xl font-bold">RIFAS ETEC</h1>
     </div>
 </template>
