@@ -19,4 +19,8 @@ Route::get('/register', function () {
     return Inertia::render("register");
 });
 
+Route::get('/', function () {
+    return Inertia::render("index");
+});
+
 Route::post('/user', [UserController::class, "create"]);
