@@ -19,6 +19,10 @@ Route::get('/register', function () {
     return Inertia::render("register");
 });
 
+Route::get('/login', function () {
+    return Inertia::render("login");
+});
+
 Route::get('/', function () {
     return Inertia::render("index");
 });
