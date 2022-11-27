@@ -1,5 +1,5 @@
 <script setup>
-import { Button, CSRF, Input } from "../Components";
+    import { Button, CSRF, Input } from "../Components";
 </script>
 
 <template>
@@ -10,35 +10,40 @@ import { Button, CSRF, Input } from "../Components";
             <img
                 src="/logoEtec.jpg"
                 alt="Logo da Etec da Zona Leste"
-                class="h-24 rounded-xl mb-6"
+                class="h-24 rounded-xl mb-10"
             />
-
-            <h1 class="uppercase text-2xl font-bold mb-8">
-                Gerenciamento de Rifas
-            </h1>
 
             <form
                 action="/user"
                 method="POST"
-                class="flex flex-col w-full gap-y-6"
+                class="flex flex-col w-full h-full md:h-auto gap-y-6 justify-between md:justify-start"
             >
                 <CSRF />
-                <Input labeltext="Nome" name="name" type="text" required />
-                <Input labeltext="RM" name="rm" type="number" required />
-                <Input
-                    labeltext="Senha"
-                    name="password"
-                    type="password"
-                    required
-                />
-                <Input
-                    labeltext="Confirme a senha"
-                    name="password_confirmation"
-                    type="password"
-                    required
-                />
+                <div
+                    class="flex flex-col gap-y-6"
+                >
+                    <Input labeltext="Nome" name="name" type="text" required />
+                    <Input labeltext="RM" name="rm" type="number" required />
+                    <Input
+                        labeltext="Senha"
+                        name="password"
+                        type="password"
+                        required
+                    />
+                    <Input
+                        labeltext="Confirme a senha"
+                        name="password_confirmation"
+                        type="password"
+                        required
+                    />
+                </div>
 
-                <Button type="submit" @click="handleSubmit">Cadastrar</Button>
+                <div
+                    class="flex flex-col gap-y-6"
+                >
+                    <Button type="submit" :hasBackground="true" color="sky" @click="handleSubmit">Cadastrar</Button>
+                    <Button type="submit" :hasBackground="false" color="sky" @click="handleSubmit">Entrar</Button>
+                </div>
             </form>
         </div>
     </div>
