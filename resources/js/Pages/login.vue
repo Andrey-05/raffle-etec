@@ -1,5 +1,5 @@
 <script setup>
-    import { Button, CSRF, Input } from "../Components";
+import { Button, CSRF, Input } from "../Components";
 </script>
 
 <template>
@@ -22,17 +22,10 @@
                 <div
                     class="flex flex-col gap-y-6"
                 >
-                    <Input labeltext="Nome" name="name" type="text" required />
                     <Input labeltext="RM" name="rm" type="number" required />
                     <Input
                         labeltext="Senha"
                         name="password"
-                        type="password"
-                        required
-                    />
-                    <Input
-                        labeltext="Confirme a senha"
-                        name="password_confirmation"
                         type="password"
                         required
                     />
@@ -41,28 +34,10 @@
                 <div
                     class="flex flex-col gap-y-6"
                 >
-                    <Button type="submit" :hasBackground="true" color="sky" @click="handleSubmit">Cadastrar</Button>
-                    <Button type="submit" :hasBackground="false" color="sky" @click="handleSubmit">Entrar</Button>
+                    <Button type="submit" :hasBackground="true" color="sky" @click="handleSubmit">Entrar</Button>
+                    <Button type="submit" :hasBackground="false" color="sky" @click="handleSubmit">Cadastrar-se</Button>
                 </div>
             </form>
         </div>
     </div>
 </template>
-
-<script>
-async function handleSubmit(e) {
-    e.preventDefault();
-
-    try {
-        const res = await axios.post("/user", {
-            name: "Test",
-            password: "123",
-            password_confirmation: "1234",
-        });
-    } catch (error) {
-        if (axios.isAxiosError(error)) {
-            console.log(error.response.data.error);
-        }
-    }
-}
-</script>
