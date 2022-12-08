@@ -23,6 +23,10 @@ Route::get('/login', function () {
     return Inertia::render("login");
 });
 
+Route::get('/raffles', function () {
+    return Inertia::render("allRaffles");
+});
+
 Route::get('/', function () {
     return Inertia::render("index");
 });
