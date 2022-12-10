@@ -31,6 +31,10 @@ Route::get('/raffles/ranking', function () {
     return Inertia::render("ranking");
 });
 
+Route::get("/dashboard", function () {
+    return Inertia::render("dashboard");
+});
+
 Route::get('/', function () {
     return Inertia::render("index");
 });
