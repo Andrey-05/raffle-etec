@@ -39,6 +39,10 @@ Route::get('/dashboard/name', function () {
     return Inertia::render("selectRaffle");
 });
 
+Route::get('/dashboard/criar', function () {
+    return Inertia::render("newRaffle");
+});
+
 Route::get('/', function () {
     return Inertia::render("index");
 });
