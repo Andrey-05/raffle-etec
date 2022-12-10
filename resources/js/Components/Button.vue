@@ -9,7 +9,7 @@
 <template>
     <button
         :class="
-            `h-12 rounded-md uppercase font-bold
+            `flex justify-center items-center h-12 p-2 rounded-md uppercase font-bold gap-x-1
             ${hasBackground
                 ? color == 'sky' 
                     ? 'bg-sky-600 text-white hover:bg-sky-700' 
