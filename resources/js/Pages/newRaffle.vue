@@ -96,7 +96,6 @@
                         >
                             <MinusIcon class="w-full"/>
                         </button>
-
                     </div>
                     
                 </div>

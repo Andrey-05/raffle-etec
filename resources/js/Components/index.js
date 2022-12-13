@@ -5,5 +5,6 @@ import RankingItem from "./RankingItem.vue"
 import InfoRaffle from "./InfoRaffle.vue"
 import RaffleList from "./RaffleList.vue"
 import DashboardRow from "./DashboardRow.vue"
+import InputList from "./InputList.vue"
 
-export { Button, Input, CSRF, RankingItem, InfoRaffle, RaffleList, DashboardRow}
+export { Button, Input, CSRF, RankingItem, InfoRaffle, RaffleList, DashboardRow, InputList}
