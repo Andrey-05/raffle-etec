@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prizes', function (Blueprint $table) {
+        Schema::create('sellers', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->string("description");
-            $table->integer("position");
-            $table->uuid("raffle_id");
+            $table->string("rm");
             $table->timestamps();
 
-            $table->foreign("raffle_id")->references("id")->on("raffles")->onDelete("cascade");
-            $table->unique(["raffle_id", "position"]);
+            $table->unique("rm");
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prizes');
+        Schema::dropIfExists('sellers');
     }
 };

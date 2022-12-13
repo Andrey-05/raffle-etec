@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prizes', function (Blueprint $table) {
+        Schema::create('purchased_tickets', function (Blueprint $table) {
             $table->uuid("id")->primary();
-            $table->string("description");
-            $table->integer("position");
             $table->uuid("raffle_id");
+            $table->uuid("seller_id");
+            $table->string("buyer_phone");
+            $table->string("buyer_name");
+            $table->integer("ticket_number");
             $table->timestamps();
 
             $table->foreign("raffle_id")->references("id")->on("raffles")->onDelete("cascade");
-            $table->unique(["raffle_id", "position"]);
+            $table->foreign("seller_id")->references("id")->on("sellers");
+            $table->unique(["raffle_id", "ticket_number"]);
         });
     }
 
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prizes');
+        Schema::dropIfExists('purchased_tickets');
     }
 };

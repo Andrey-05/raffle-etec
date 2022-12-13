@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string("description");
             $table->date("date");
             $table->float("price");
-            $table->string("manager_id");
+            $table->uuid("manager_id");
+            $table->integer("ticket_book_number");
+            $table->integer("ticket_number_by_book");
             $table->timestamps();
 
             $table->foreign("manager_id")->references("id")->on("managers");
