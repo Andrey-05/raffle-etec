@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\PurchasedTicketController;
+use App\Http\Controllers\RaffleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// MANAGERS
+Route::post('/manager', [ManagerController::class, "create"]);
+
+// RAFFLES
+Route::post('/raffle', [RaffleController::class, "create"]);
+Route::delete("/raffle/{id}", [RaffleController::class, "delete"]);
+
+// PURCHASED TICKETS
+Route::post("/ticket", [PurchasedTicketController::class, "create"]);

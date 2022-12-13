@@ -50,5 +50,3 @@ Route::get('/dashboard/vender-rifa', function () {
 Route::get('/', function () {
     return Inertia::render("index");
 });
-
-Route::post('/user', [UserController::class, "create"]);
