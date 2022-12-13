@@ -7,7 +7,7 @@ defineEmits(["update:modelValue"]);
 </script>
 
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col w-full">
         <label class="uppercase text-sky-600 font-bold">{{ labeltext }}</label>
         <input
             v-bind="$attrs"

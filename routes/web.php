@@ -23,6 +23,30 @@ Route::get('/login', function () {
     return Inertia::render("login");
 });
 
+Route::get('/raffles', function () {
+    return Inertia::render("allRaffles");
+});
+
+Route::get('/raffles/ranking', function () {
+    return Inertia::render("ranking");
+});
+
+Route::get("/dashboard", function () {
+    return Inertia::render("dashboard");
+});
+
+Route::get('/dashboard/name', function () {
+    return Inertia::render("selectRaffle");
+});
+
+Route::get('/dashboard/criar', function () {
+    return Inertia::render("newRaffle");
+});
+
+Route::get('/dashboard/vender-rifa', function () {
+    return Inertia::render("sell-raffle");
+});
+
 Route::get('/', function () {
     return Inertia::render("index");
 });
