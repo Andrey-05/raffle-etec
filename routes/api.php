@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\RaffleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('/manager', [ManagerController::class, "create"]);
+Route::post('/raffle', [RaffleController::class, "create"]);
