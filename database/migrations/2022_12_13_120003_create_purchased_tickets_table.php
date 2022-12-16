@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("buyer_phone");
             $table->string("buyer_name");
             $table->integer("ticket_number");
+            $table->date("purchase_date");
             $table->timestamps();
 
             $table->foreign("raffle_id")->references("id")->on("raffles")->onDelete("cascade");

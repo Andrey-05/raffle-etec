@@ -17,5 +17,15 @@ class Raffle extends Model
         static::creating(fn (Raffle $raffle) => $raffle->id = (string) Uuid::uuid4());
     }
 
-    protected $fillable = ["title", "description", "date", "price", "manager_id"];
+    public function prizes()
+    {
+        return $this->hasMany(Prize::class, "raffle_id");
+    }
+
+    public function purchasedTickets()
+    {
+        return $this->hasMany(PurchasedTicket::class, "raffle_id");
+    }
+
+    protected $fillable = ["title", "description", "date", "price", "manager_id", "ticket_book_number", "ticket_number_by_book"];
 }

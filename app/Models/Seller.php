@@ -17,5 +17,10 @@ class Seller extends Model
         static::creating(fn (Seller $seller) => $seller->id = (string) Uuid::uuid4());
     }
 
+    public function purchasedTickets()
+    {
+        return $this->hasMany(PurchasedTicket::class, "seller_id");
+    }
+
     protected $fillable = ["rm"];
 }

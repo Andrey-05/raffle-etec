@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("rm");
             $table->string("password");
             $table->timestamps();
+
+            $table->unique("rm");
         });
     }
 

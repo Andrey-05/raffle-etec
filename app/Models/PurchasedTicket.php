@@ -12,10 +12,17 @@ class PurchasedTicket extends Model
 
     public $incrementing = false;
 
+    protected $with = ["seller"];
+
     protected static function booted()
     {
         static::creating(fn (PurchasedTicket $purchasedTicket) => $purchasedTicket->id = (string) Uuid::uuid4());
     }
 
-    protected $fillable = ["raffle_id", "seller_id", "buyer_phone", "buyer_name", "ticket_number"];
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
+
+    protected $fillable = ["raffle_id", "seller_id", "buyer_phone", "buyer_name", "ticket_number", "purchase_date"];
 }

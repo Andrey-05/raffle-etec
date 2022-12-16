@@ -18,5 +18,10 @@ class Manager extends Model
         static::creating(fn (Manager $manager) => $manager->id = (string) Uuid::uuid4());
     }
 
+    public function raffles()
+    {
+        return $this->hasMany(Raffle::class, "manager_id");
+    }
+
     protected $fillable = ["name", "rm", "password"];
 }

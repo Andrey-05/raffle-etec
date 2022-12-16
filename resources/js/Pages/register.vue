@@ -1,8 +1,11 @@
 <script setup>
-import { Button, CSRF, Input } from "../Components";
-import { Inertia } from "@inertiajs/inertia";
+import { Button, CSRF, Input, LogoEtec } from "../Components";
 import { useForm } from "@inertiajs/inertia-vue3";
 import axios from "axios";
+
+import { getCurrentInstance } from "@vue/runtime-core";
+
+const globals = getCurrentInstance().appContext.config.globalProperties;
 
 const form = useForm({
     name: "",
@@ -17,9 +20,19 @@ async function handleSubmit() {
             throw new Error("Senhas não correspondem");
         }
 
-        const res = await axios.post("/api/user", form.data());
+        const res = await axios.post("/api/register", form.data());
+
+        window.location.pathname = "/dashboard";
     } catch (error) {
-        console.error(error.message);
+        if (axios.isAxiosError(error)) {
+            globals.$toast.error(error.response.data.error, {
+                position: "top-right",
+            });
+        } else {
+            globals.$toast.error(error.message, {
+                position: "top-right",
+            });
+        }
     }
 }
 </script>
@@ -29,11 +42,7 @@ async function handleSubmit() {
         <div
             class="flex flex-col max-w-xl items-center md:justify-center p-6 flex-1 md:p-0"
         >
-            <img
-                src="/logoEtec.jpg"
-                alt="Logo da Etec da Zona Leste"
-                class="h-24 rounded-xl mb-10"
-            />
+            <LogoEtec />
 
             <form
                 class="flex flex-col w-full h-full md:h-auto gap-y-6 justify-between md:justify-start"
@@ -75,9 +84,11 @@ async function handleSubmit() {
                     <Button type="submit" :hasBackground="true" color="sky"
                         >Cadastrar</Button
                     >
-                    <Button type="button" :hasBackground="false" color="sky"
-                        >Entrar</Button
-                    >
+                    <a href="/login">
+                        <Button type="button" :hasBackground="false" color="sky"
+                            >Entrar</Button
+                        >
+                    </a>
                 </div>
             </form>
         </div>

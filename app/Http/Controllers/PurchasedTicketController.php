@@ -16,7 +16,8 @@ class PurchasedTicketController extends Controller
                 "rm" => ["required"],
                 "buyer_phone" => ["required"],
                 "buyer_name" => ["required"],
-                "ticket_number" => ["required"]
+                "ticket_numbers" => ["required"],
+                "purchase_date" => ["required"],
             ]);
 
             $seller = Seller::where("rm", $req->rm)->firstOr(function () use ($req) {
@@ -25,13 +26,16 @@ class PurchasedTicketController extends Controller
                 ]);
             });
 
-            $purchasedTicket = PurchasedTicket::create([
-                "raffle_id" => $req->raffle_id,
-                "seller_id" => $seller->id,
-                "buyer_phone" => $req->buyer_phone,
-                "buyer_name" => $req->buyer_name,
-                "ticket_number" => $req->ticket_number,
-            ]);
+            foreach ($req->ticket_numbers as $ticket_number) {
+                $purchasedTicket = PurchasedTicket::create([
+                    "raffle_id" => $req->raffle_id,
+                    "seller_id" => $seller->id,
+                    "buyer_phone" => $req->buyer_phone,
+                    "buyer_name" => $req->buyer_name,
+                    "ticket_number" => $ticket_number,
+                    "purchase_date" => $req->purchase_date,
+                ]);
+            }
 
             return response()->json($purchasedTicket, 201);
         } catch (\Throwable $th) {

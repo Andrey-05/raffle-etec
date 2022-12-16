@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // MANAGERS
-Route::post('/manager', [ManagerController::class, "create"]);
+Route::post('/register', [ManagerController::class, "create"]);
+Route::post("/login", [ManagerController::class, "login"]);
 
 // RAFFLES
 Route::post('/raffle', [RaffleController::class, "create"]);
